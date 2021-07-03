@@ -1,4 +1,5 @@
 'use strict'
+/*
  //---------127.Default Parameters------------
 const bookings = [];
 
@@ -128,9 +129,84 @@ greet('Hello')('Jonas');
 const greetArr = greeting => name => console.log(`${greeting} ${name}`);
 
 greetArr('Hello')('Jonas');
-
+*/
 
 // ----------132. The call and apply Methods-------------
 const lufthansa = {
   airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name});
+  }
+}
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+}
+
+const book = lufthansa.book;
+
+// Dose NOT work
+// book(23, 'Sarah Williams');
+
+// Call method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+}
+book.call(swiss, 583, 'Mary Cooper');
+console.log(swiss);
+
+// Apply method
+// Call 和 Apply 唯一区别是 apply does not receive a list of arguments after the this keyword
+// Apply method 第二个参数是一个数组
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+// 在函数调用时使用展开语法，等价于apply的方式
+//apply现在基本不用，而是用展开语法
+book.call(swiss, ...flightData);
+console.log(swiss);
+// 现代js中更常使用 call+ ...展开语法 的方法
+
+// ----------133. The bind Method-------------
+// The difference is that bind does not immediately call the function
+// instead it returns a new function where the this keyword is bound
+// Bind method
+// book.call(eurowings, 23, 'Sarah Williams');
+// set in stone:一成不变的
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams');
+console.log(eurowings);
+
+const bookEW23 = book.bind(eurowings, 23);//可以保持一些参数不变
+bookEW23('Jonas Schmedtmann');
+bookEW23('Martha Cooper');
+// partial application means that a part of the arguments of the original function are already applied
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function() {
+  console.log(this);
+
+  this.planes++
+  console.log(this.planes);
 }

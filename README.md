@@ -69,3 +69,56 @@ const lufthansa = {
 
 ### 128. How Passing Arguments Works: Value vs. Reference
 
+### 132. The call and apply Methods
+```javascript
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, name) {
+    console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`);
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name});
+  }
+}
+
+lufthansa.book(239, 'Jonas Schmedtmann');
+lufthansa.book(635, 'John Smith');
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+}
+
+const book = lufthansa.book;
+
+// Dose NOT work
+// book(23, 'Sarah Williams');
+
+// Call method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+}
+book.call(swiss, 583, 'Mary Cooper');
+console.log(swiss);
+
+// Apply method
+// Call 和 Apply 唯一区别是 apply does not receive a list of arguments after the this keyword
+// Apply method 第二个参数是一个数组
+const flightData = [583, 'George Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+// 在函数调用时使用展开语法，等价于apply的方式
+//apply现在基本不用，而是用展开语法
+book.call(swiss, ...flightData);
+console.log(swiss);
+// 现代js中更常使用 call+ ...展开语法 的方法
+```
