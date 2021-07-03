@@ -32,18 +32,18 @@ createBooking('LH123', 5);
 createBooking('LH123', undefined, 1000);
 //如果想跳过第二个参数，直接给第三个参数赋值，可以用undefined,这样第二个参数获取的是默认值
 ```
-
-## enhanced object literal syntax（对象字面量的增强写法）
+#### enhanced object literal syntax（对象字面量的增强写法）
 ```javascript
 const name = 'Amy';
 const age = 18;
 const gender = 'female';
 //ES5
-const obj = {
+var obj = {
   name: name,
   age: age,
   gender: gender,
 }
+
 //ES6
 const obj = {
   name,
@@ -51,3 +51,21 @@ const obj = {
   gender,
 }
 ```
+```javascript
+//ES5
+var lufthansa = {
+  book: function() {
+
+  }
+}
+
+//ES6
+const lufthansa = {
+  book() {
+    
+  }
+}
+```
+
+### 128. How Passing Arguments Works: Value vs. Reference
+
