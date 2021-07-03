@@ -1,5 +1,5 @@
 'use strict'
-//---------127.Default Parameters------------
+ //---------127.Default Parameters------------
 const bookings = [];
 
 const createBooking = function(
@@ -63,7 +63,7 @@ const newPassport = function(person) {
 }
 //Math.trunc() 方法会将数字的小数部分去掉，只保留整数部分。
 newPassport(jonas);
-checkIn(flight, jonas);
+//checkIn(flight, jonas);
 
 //javascript does not have passing by reference, only 
 //传递对象的地址
@@ -76,3 +76,61 @@ checkIn(flight, jonas);
 //all it means is that all functions are values
 
 //----------130.Functions Accepting Callback Functions------------------
+const oneWord = function(str) {
+  return str.replace(/ /g, ' ').toLowerCase();
+};
+
+const upperFirstWord = function(str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
+// spread operator 
+// destructive assignment
+
+// Higher-order function
+const transformer = function(str, fn) {
+  console.log(`Original string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer('JavaScript is the best!', upperFirstWord);
+
+transformer('JavaScript is the best!', oneWord);
+
+// JS uses callbacks all the time
+const high5 = function () {
+  console.log('👋');
+};
+document.body.addEventListener('click', high5);
+
+['Jonas', 'Martha', 'Adam'].forEach(high5);
+// Callback Functions Advantages: 
+// 1. It makes it easy to split up or code into more reusable and interconnected parts
+// 2. It allows us to create abstraction(抽象)
+// what abstract and means is that we hide the detail of some code implementation because we don't really care 
+// about all that detail. 
+
+// ---------131. Functions Returning Functions------------
+const greet = function(greeting) {
+  return function(name) {
+    console.log(`${greeting} ${name}`);
+  }
+}
+const greeterHey = greet('Hey');//greeterHey存储greet函数的返回值
+greeterHey('Jonas');
+greeterHey('Steven');
+
+greet('Hello')('Jonas');
+
+//Chanllenge
+const greetArr = greeting => name => console.log(`${greeting} ${name}`);
+
+greetArr('Hello')('Jonas');
+
+
+// ----------132. The call and apply Methods-------------
+const lufthansa = {
+  airline: 'Lufthansa',
+}
