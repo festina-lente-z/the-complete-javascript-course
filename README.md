@@ -9,10 +9,12 @@ actually declared. "Variables lifted to the top of their scope".
 - Before execution, code is scanned for variable declarations, and for each variable, a new
 property is created in the **variable environment object**.
 
-|a|HOISTED?|INITIAL VALUE|SCOPE|
-|----|----|----|----|
-|function declarations|||
-|var variables||||
+|pk                             |HOISTED?              |INITIAL VALUE|SCOPE|
+|----                           |----                  |----         |----|
+|function declarations          |:white_check_mark: YES|Actual function|Block|
+|var variables                  |         |||
+|let and const variables        ||||
+|function expressions and arrows|
 
 ## 10. A Closer Look at Function
 ### 127. Default Parameters
