@@ -9,11 +9,11 @@ actually declared. "Variables lifted to the top of their scope".
 - Before execution, code is scanned for variable declarations, and for each variable, a new
 property is created in the **variable environment object**.
 
-|pk                             |HOISTED?              |INITIAL VALUE      |SCOPE|
-|----                           |----                  |----               |----|
-|function declarations          |:white_check_mark: YES|Actual function    |Block|
-|var variables                  |:white_check_mark: YES|undefined          |Function|
-|let and const variables        |:x: NO                |<uninitialized>,TDZ|Block|
+|pk                             |HOISTED?              |INITIAL VALUE    |SCOPE|
+|----                           |----                  |----             |----|
+|function declarations          |:white_check_mark: YES|Actual function  |Block|
+|var variables                  |:white_check_mark: YES|undefined        |Function|
+|let and const variables        |:x: NO                |uninitialized,TDZ|Block|
 |function expressions and arrows|Depends it using var or let/const|
 
 >TDZ: Temporal Dead Zone(暂时性死区)

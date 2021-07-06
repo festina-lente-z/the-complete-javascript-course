@@ -1,4 +1,4 @@
-'use strict'
+//'use strict'
 /*
  //---------127.Default Parameters------------
 const bookings = [];
@@ -317,13 +317,13 @@ runOnce();
 }
 // console.log(isPrivate);
 console.log(notPrivate);
-*/
+
 
 // ---------136. Closures----------------
 // a closure is not a feature that we explicitly use
 const secureBooking = function() {
   let passengerCount = 0;
-
+  passengerCount++;
   return function() {
     passengerCount++;
     console.log(`${passengerCount} passengers`);
@@ -331,3 +331,90 @@ const secureBooking = function() {
 }
 
 const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);
+
+// A function has access to the variable environment(VE) of the execution context which it was created,
+// even after that execution context is gone.
+
+// Closure: variable environment(VE) attached to the function, exactly as it was at the time and the place
+// the function was created.
+
+// A closure is the closed-over(封闭的) variable environment of the execution context in which a function
+// was created, even after that execution context is gone;
+
+// A closure gives a function access to all the variables of its parent function, even after that parent
+// function has returned. The function keeps a reference to its outer scope, which preserves(保留) the scope
+// chain throughout time.
+
+// A closure makes sure that a function doesn't loose connection to variables that existed at the function's
+// birth palce
+
+// A closure is like a backpack that a function carries around wherever it goes. This backpack has all the
+// variables that were present in the environment where the function was created.
+
+// We do NOT have to manually create closures, this is a JavaScript feature that happens automatically.
+// We can't even access closed-over variables explicitly. A closure is NOT a tangible JavaScript object.
+
+
+// ------137. More Closure Examples----------
+// Example 1
+let f;
+
+const g = function() {
+  const a = 23;
+  f = function() {
+    console.log(a * 2);
+  }
+}
+
+const h = function() {
+  const b = 777;
+  f = function() {
+    console.log(b * 2);
+  }
+}
+
+g();
+f();
+console.dir(f);
+
+h();
+f();
+console.dir(f);
+
+// Example 2
+const boardPassengers = function(n, wait) {
+  const perGroup = n / 3;
+
+  setTimeout(function() {
+    console.log(`We are now boarding all ${n} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, wait * 1000);
+
+  console.log(`Will start boarding in ${wait} seconds`);
+}
+
+const perGroup = 1000;
+boardPassengers(180, 3);
+*/
+// ---------138. Coding Challenge #2----------------
+/* 
+This is more of a thinking challenge than a coding challenge 🤓
+Take the IIFE below and at the end of the function, attach an event listener that changes the color of the selected h1 element ('header') to blue, each time the BODY element is clicked. Do NOT select the h1 element again!
+And now explain to YOURSELF (or someone around you) WHY this worked! Take all the time you need. Think about WHEN exactly the callback function is executed, and what that means for the variables involved in this example.
+GOOD LUCK 😀
+*/
+
+(function() {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.querySelector('body').addEventListener(
+    'click', function() {
+      header.style.color = 'blue';
+    });
+})();
