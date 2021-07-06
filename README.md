@@ -8,6 +8,10 @@
 actually declared. "Variables lifted to the top of their scope".
 - Before execution, code is scanned for variable declarations, and for each variable, a new
 property is created in the **variable environment object**.
+|-|HOISTED?|INITIAL VALUE|SCOPE|
+-----
+|function declarations|||
+|var variables|
 
 ## 10. A Closer Look at Function
 ### 127. Default Parameters
