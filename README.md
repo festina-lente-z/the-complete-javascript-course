@@ -140,3 +140,42 @@ book.call(swiss, ...flightData);
 console.log(swiss);
 // 现代js中更常使用 call+ ...展开语法 的方法
 ```
+
+## 14. OOP
+
+### 203. What is Object-Oriented Programming?
+
+:point_right: Object-oriented programming (OOP) is a programming <mark>paradigm</mark> based on the concept of objects;
+
+> Paradigm: Style of code, "how" we write and organize code
+
+:point_right:  We use objects to **model** (describe) real-eorld or <span style="background-color: #abbfff">abstract features</span>;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
