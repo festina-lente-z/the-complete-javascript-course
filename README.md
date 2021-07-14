@@ -145,23 +145,53 @@ console.log(swiss);
 
 ### 203. What is Object-Oriented Programming?
 
-:point_right: Object-oriented programming (OOP) is a programming <mark>paradigm</mark> based on the concept of objects;
+:point_right: Object-oriented programming (OOP) is a programming *paradigm* based on the concept of objects;
 
 > Paradigm: Style of code, "how" we write and organize code
 
-:point_right:  We use objects to **model** (describe) real-eorld or <span style="background-color: #abbfff">abstract features</span>;
+:point_right:  We use objects to **model** (describe) *real-world* or *abstract features*;
+
+> real-world: user or todo list item
+>
+> abstract features: HTML component or data structure
+
+:point_right:  Objects may contain data (properties) and code (methods). By using objects, we pack **data and the corresponding behavior** into one block;
+
+:point_right:  In OOP, objects are self-contained pieces/blocks of code;
+
+:point_right:  Objects are **building blocks** of applications, and **interact** with one another;
+
+:point_right:  Interactions happen through a **public interface** (API): methods that the code **outside** of the object can access and use to communicate with the object;
+
+:point_right:  OOP was developed with the goal of **organizing** code, to make it **more flexible and easier to maintain** (avoid "spaghetti code").
+
+![avatar](/Users/whz/web-projects/the-complete-javascript-course/img/oop1.png)
 
 
 
+:point_right:  **Abstraction:** Ignoring or hiding details that **don't matter,** allowing us to get an overview perspective of the thing we're implementing, instead of messing with details that don't really matter to our implementation.
+
+![avatar](/Users/whz/web-projects/the-complete-javascript-course/img/oop2.jpeg)
+
+:point_right:  **Encapsulation (封装):** Keeping properties and methods **private** inside the class, so they are **not accessible from outside the class.** Some methods can be **exposed** as a public interface (API).
 
 
 
+:point_right:  **Inheritance:** Making all properties and methods of a certain class **available to a child class,** forming a hierarchical (分层的) relationship between classes. This allows us to **reuse common logic** and to model real-world relationships.
 
 
 
+:point_right:  **Polymorphism (多态性):** A child class can **overwrite (改写)** a method it inherited from a parent class [it's more complex that, but enough for our purposes].
 
+### 204. OOP in JavaScript
 
+:point_right: **Prototypal inheritance:** The prototype contains methods (behavior) that are **accessible to all objects linked to that prototype;**
 
+> an instance inheriting from a class
+
+:point_right: Behavior is **delegated** to the linked prototype object.
+
+**Q: How do we implement Object-Oriented Programming in JavaScript in practice?**
 
 
 
