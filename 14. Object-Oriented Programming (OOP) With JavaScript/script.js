@@ -32,4 +32,26 @@ console.log(jay instanceof Person);
 
 
 // 206. Prototypes
+// first each and every function in JavaScript automatically has a property called prototype
+// And that includes, of course, constructor functions
+// Now every object that's created by a certain constructor function will get access to all
+// the methods and properties that we define on the constructors prototype property.
 
+console.log(Person.prototype);
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+}
+// the "this" keyword in each of them is as always set to the object that is calling the method
+// this 指向调用这个函数的对象 （下面例子里的jonas）
+
+jonas.calcAge();
+matilda.calcAge();
+// any object always has access to the methods and properties from its prototype
+// and the prototype of Jonas and Matilda is Person.prototype
+console.log(jonas.__proto__);
+// each object has a special property called __proto__
+console.log(jonas.__proto__ === Person.prototype); // true
+
+console.log(Person.prototype.isPrototypeOf(jonas)); // true
+// __proto__ of the Jonas object is essentially the prototype property of the constructor function
+console.log(Person.prototype === Person.__proto__); // false
